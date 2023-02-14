@@ -40,7 +40,7 @@ class Computadores extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'tipo_computador' => 'Tipo Computador',
+            'tipo_computador' => 'Tipo do Computador',
         ];
     }
 

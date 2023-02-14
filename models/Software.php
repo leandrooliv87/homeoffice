@@ -40,7 +40,7 @@ class Software extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'software_ligacao' => 'Software Ligacao',
+            'software_ligacao' => 'Software de Ligacao',
         ];
     }
 

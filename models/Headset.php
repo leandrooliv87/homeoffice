@@ -40,7 +40,7 @@ class Headset extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'marca_headset' => 'Marca Headset',
+            'marca_headset' => 'Marca do Headset',
         ];
     }
 

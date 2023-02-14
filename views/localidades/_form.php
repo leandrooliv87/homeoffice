@@ -1,5 +1,6 @@
 <?php
 
+use PhpParser\Node\VariadicPlaceholder;
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 
@@ -15,9 +16,10 @@ use yii\widgets\ActiveForm;
     <?= $form->field($model, 'cidade')->textInput(['maxlength' => true]) ?>
 
     <?= $form->field($model, 'estado')->textInput(['maxlength' => true]) ?>
+    <br>
 
     <div class="form-group">
-        <?= Html::submitButton('Save', ['class' => 'btn btn-success']) ?>
+        <?= Html::submitButton('Salvar', ['class' => 'btn btn-success']) ?>
     </div>
 
     <?php ActiveForm::end(); ?>

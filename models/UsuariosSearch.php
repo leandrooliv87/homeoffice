@@ -40,13 +40,33 @@ class UsuariosSearch extends Usuarios
      */
     public function search($params)
     {
-        $query = Usuarios::find();
+        $query = Usuarios::find()->joinWith(['localidade', 'computador', 'headset', 'software']);
 
         // add conditions that should always apply here
 
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
         ]);
+
+        $dataProvider -> sort -> attributes['id_localidade'] = [
+            'asc' => ['localidades.cidade' => SORT_ASC],
+            'desc' => ['localidades.cidade' => SORT_DESC],
+        ];
+
+        $dataProvider -> sort -> attributes['id_computadores'] = [
+            'asc' => ['computadores.tipo_computador' => SORT_ASC],
+            'desc' => ['computadores.tipo_computador' => SORT_DESC],
+        ];
+
+        $dataProvider -> sort -> attributes['id_headset'] = [
+            'asc' => ['headset.marca_headset' => SORT_ASC],
+            'desc' => ['headset.marca_headset' => SORT_DESC],
+        ];
+
+        $dataProvider -> sort -> attributes['id_software'] = [
+            'asc' => ['software.software_ligacao' => SORT_ASC],
+            'desc' => ['software.software_ligacao' => SORT_DESC],
+        ];
 
         $this->load($params);
 
@@ -69,11 +89,12 @@ class UsuariosSearch extends Usuarios
             'id_headset' => $this->id_headset,
             'id_software' => $this->id_software,
         ]);
-
+        
         $query->andFilterWhere(['like', 'nome_usuario', $this->nome_usuario])
             ->andFilterWhere(['like', 'funcao_usuario', $this->funcao_usuario])
             ->andFilterWhere(['like', 'tipo_mesa', $this->tipo_mesa])
-            ->andFilterWhere(['like', 'observacao', $this->observacao]);
+            ->andFilterWhere(['like', 'observacao', $this->observacao])
+            ->andFilterWhere(['like', 'localidades.cidade', $this->id_localidade]);
 
         return $dataProvider;
     }

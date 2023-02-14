@@ -5,7 +5,7 @@ use yii\helpers\Html;
 /** @var yii\web\View $this */
 /** @var app\models\Headset $model */
 
-$this->title = 'Create Headset';
+$this->title = 'Novo Headset';
 $this->params['breadcrumbs'][] = ['label' => 'Headsets', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>

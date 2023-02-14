@@ -1,5 +1,6 @@
 <?php
 
+use app\models\Localidades;
 use app\models\Usuarios;
 use yii\helpers\Html;
 use yii\helpers\Url;
@@ -15,10 +16,10 @@ $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="usuarios-index">
 
-    <h1><?= Html::encode($this->title) ?></h1>
+    
 
     <p>
-        <?= Html::a('Create Usuarios', ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('Novo Usuario', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
 
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
@@ -34,15 +35,15 @@ $this->params['breadcrumbs'][] = $this->title;
             'funcao_usuario',
             'numero_modem',
             'patrimonio_monitor',
-            //'patrimonio_cadeira',
-            //'tipo_mesa',
-            //'numero_ramal',
-            //'webcam',
-            //'observacao:ntext',
-            //'id_localidade',
-            //'id_computador',
-            //'id_headset',
-            //'id_software',
+            'patrimonio_cadeira',
+            'tipo_mesa',
+            'numero_ramal',
+            'webcam',
+            'observacao:ntext',
+            'id_localidade',
+            'id_computador',
+            'id_headset',
+            'id_software',
             [
                 'class' => ActionColumn::className(),
                 'urlCreator' => function ($action, Usuarios $model, $key, $index, $column) {

@@ -1,5 +1,7 @@
 <?php
 
+use app\models\Localidades;
+use app\models\Usuarios;
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 
@@ -12,36 +14,90 @@ use yii\widgets\ActiveForm;
 
     <?php $form = ActiveForm::begin(); ?>
 
-    <?= $form->field($model, 'nome_usuario')->textInput(['maxlength' => true]) ?>
+    <div class="row">
 
-    <?= $form->field($model, 'funcao_usuario')->textInput(['maxlength' => true]) ?>
+        <div class="col-lg-4">
+            <?= $form->field($model, 'nome_usuario')->textInput(['maxlength' => true,]) ?>
+        </div>
 
-    <?= $form->field($model, 'numero_modem')->textInput() ?>
+        <div class="col-lg-4">
+            <?= $form->field($model, 'funcao_usuario')->textInput(['maxlength' => true]) ?>
+        </div>
 
-    <?= $form->field($model, 'patrimonio_monitor')->textInput() ?>
+        <div class="col-lg-4">
+            <?= $form->field($model, 'numero_modem')->textInput() ?>
+        </div>
 
-    <?= $form->field($model, 'patrimonio_cadeira')->textInput() ?>
-
-    <?= $form->field($model, 'tipo_mesa')->textInput(['maxlength' => true]) ?>
-
-    <?= $form->field($model, 'numero_ramal')->textInput() ?>
-
-    <?= $form->field($model, 'webcam')->textInput() ?>
-
-    <?= $form->field($model, 'observacao')->textarea(['rows' => 6]) ?>
-
-    <?= $form->field($model, 'id_localidade')->textInput() ?>
-
-    <?= $form->field($model, 'id_computador')->textInput() ?>
-
-    <?= $form->field($model, 'id_headset')->textInput() ?>
-
-    <?= $form->field($model, 'id_software')->textInput() ?>
-
-    <div class="form-group">
-        <?= Html::submitButton('Save', ['class' => 'btn btn-success']) ?>
     </div>
 
-    <?php ActiveForm::end(); ?>
+    <br>
+
+    <div class="row">
+        <div class="col-lg-4">
+            <?= $form->field($model, 'patrimonio_monitor')->textInput() ?>
+        </div>
+
+        <div class="col-lg-4">
+            <?= $form->field($model, 'patrimonio_cadeira')->textInput() ?>
+        </div>
+
+        <div class="col-lg-4">
+            <?= $form->field($model, 'tipo_mesa')->textInput(['maxlength' => true]) ?>
+        </div>
+
+    </div>
+
+    <br>
+
+    <div class="row">
+        <div class="col-lg-4">
+            <?= $form->field($model, 'numero_ramal')->textInput() ?>
+        </div>
+
+        <div class="col-lg-4">
+            <?= $form->field($model, 'webcam')->textInput() ?>
+        </div>
+
+        <div class="col-lg-4">
+            <?= $form->field($model, 'id_localidade')->dropDownList(Usuarios::getLocalidades(), ['prompt' => '::Selecione::']) ?>
+        </div>
+
+    </div>
+
+    <br>
+
+    <div class="row">
+        <div class="col-lg-4">
+            <?= $form->field($model, 'id_computador')->dropDownList(Usuarios::getComputadores(), ['prompt' => '::Selecione::']) ?>
+        </div>
+
+        <div class="col-lg-4">
+            <?= $form->field($model, 'id_headset')->dropDownList(Usuarios::getHeadsets(), ['prompt' => '::Selecione::']) ?>
+        </div>
+
+        <div class="col-lg-4">
+            <?= $form->field($model, 'id_software')->dropDownList(Usuarios::getSoftwares(), ['prompt' => '::Selecione::']) ?>
+        </div>
+
+    </div>
+
+    <br>
+
+    <div class="row">
+        <div class="col-lg-12">
+            <?= $form->field($model, 'observacao')->textarea(['rows' => 6]) ?>
+
+        </div>
+    </div>
+
+</div>
+
+<br>
+
+<div class="form-group">
+    <?= Html::submitButton('Salvar', ['class' => 'btn btn-success']) ?>
+</div>
+
+<?php ActiveForm::end(); ?>
 
 </div>

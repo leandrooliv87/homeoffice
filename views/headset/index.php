@@ -15,10 +15,10 @@ $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="headset-index">
 
-    <h1><?= Html::encode($this->title) ?></h1>
+    
 
     <p>
-        <?= Html::a('Create Headset', ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('Novo Headset', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
 
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>

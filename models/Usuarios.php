@@ -3,6 +3,7 @@
 namespace app\models;
 
 use Yii;
+use yii\helpers\ArrayHelper;
 
 /**
  * This is the model class for table "usuarios".
@@ -61,19 +62,19 @@ class Usuarios extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'nome_usuario' => 'Nome Usuario',
-            'funcao_usuario' => 'Funcao Usuario',
-            'numero_modem' => 'Numero Modem',
-            'patrimonio_monitor' => 'Patrimonio Monitor',
-            'patrimonio_cadeira' => 'Patrimonio Cadeira',
-            'tipo_mesa' => 'Tipo Mesa',
-            'numero_ramal' => 'Numero Ramal',
+            'nome_usuario' => 'Nome do Usuário',
+            'funcao_usuario' => 'Função do Usuário',
+            'numero_modem' => 'Número do Modem',
+            'patrimonio_monitor' => 'Patrimônio do Monitor',
+            'patrimonio_cadeira' => 'Patrimônio da Cadeira',
+            'tipo_mesa' => 'Tipo da Mesa',
+            'numero_ramal' => 'Número do Ramal',
             'webcam' => 'Webcam',
-            'observacao' => 'Observacao',
-            'id_localidade' => 'Id Localidade',
-            'id_computador' => 'Id Computador',
-            'id_headset' => 'Id Headset',
-            'id_software' => 'Id Software',
+            'observacao' => 'Observação',
+            'id_localidade' => 'Localidade',
+            'id_computador' => 'Tipo do Computador',
+            'id_headset' => 'Marca do Headset',
+            'id_software' => 'Software de Ligação',
         ];
     }
 
@@ -87,6 +88,12 @@ class Usuarios extends \yii\db\ActiveRecord
         return $this->hasOne(Computadores::class, ['id' => 'id_computador']);
     }
 
+    public static function getComputadores()
+    {
+        $computadores = Computadores::find()->orderBy('tipo_computador ASC')->all();
+        return ArrayHelper::map($computadores, 'id', 'tipo_computador');
+    }
+
     /**
      * Gets query for [[Headset]].
      *
@@ -95,6 +102,12 @@ class Usuarios extends \yii\db\ActiveRecord
     public function getHeadset()
     {
         return $this->hasOne(Headset::class, ['id' => 'id_headset']);
+    }
+
+    public static function getHeadsets()
+    {
+        $headsets = Headset::find()->orderBy('marca_headset ASC')->all();
+        return ArrayHelper::map($headsets, 'id', 'marca_headset');
     }
 
     /**
@@ -107,6 +120,12 @@ class Usuarios extends \yii\db\ActiveRecord
         return $this->hasOne(Localidades::class, ['id' => 'id_localidade']);
     }
 
+    public static function getLocalidades()
+    {
+        $cidades = Localidades::find()->orderBy('cidade ASC')->all();
+        return ArrayHelper::map($cidades, 'id', 'cidade');
+    }
+
     /**
      * Gets query for [[Software]].
      *
@@ -115,5 +134,11 @@ class Usuarios extends \yii\db\ActiveRecord
     public function getSoftware()
     {
         return $this->hasOne(Software::class, ['id' => 'id_software']);
+    }
+
+    public static function getSoftwares()
+    {
+        $softwares = Software::find()->orderBy('software_ligacao ASC')->all();
+        return ArrayHelper::map($softwares, 'id', 'software_ligacao');
     }
 }
